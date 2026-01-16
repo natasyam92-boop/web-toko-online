@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skineva - Beauty Skincare Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #fce4ec 100%);
+        }
+        
+        .category-circle {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-circle:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ec4899;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .badge-bestseller {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .badge-sale {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .badge-new {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .price-strike {
+            position: relative;
+        }
+
+        .price-strike:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: #ef4444;
+        }
+
+        .package-card {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .package-card:hover {
+            border-color: #ec4899;
+            transform: translateY(-5px);
+        }
+
+        .package-popular {
+            border-color: #ec4899;
+            position: relative;
+        }
+
+        .package-popular:before {
+            content: 'PALING LARIS';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ec4899;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Top Banner -->
+    <div class="bg-pink-100 text-center py-2 text-sm flex justify-center gap-2 flex-wrap items-center">
+
+    <!-- ICON TELEPON -->
+    <img src="img/logo-whatsapp.png" alt="Phone" class="w-4 h-4">
+    <span class="text-gray-700">0857-2544-6586</span>
+
+    <span class="text-gray-400 mx-1">|</span>
+
+    <!-- ICON INSTAGRAM -->
+    <img src="img/logo-instagram.png" alt="Instagram" class="w-4 h-4">
+    <span class="text-gray-700">skineva_offc</span>
+
+    <span class="text-gray-400 mx-1">|</span>
+
+    <!-- ICON PROMO -->
+    <img src="img/logo-promo.png" alt="Promo" class="w-4 h-4">
+    <span class="font-medium">
+        Gratis Ongkir Min. Belanja Rp 100.000 | Diskon 20% Paket Bundling!
+    </span>
+
+</div>
+
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Left Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-pink-600 font-medium">BERANDA</a>
+                    <a href="#shop" class="nav-link text-gray-700 hover:text-pink-600 font-medium flex items-center">
+                        BELANJA
+                        <span class="ml-1 bg-red-500 text-white text-xs px-1.5 rounded animate-pulse">HOT</span>
+                    </a>
+                    <a href="#paket" class="nav-link text-gray-700 hover:text-pink-600 font-medium">PAKET HEMAT</a>
+                    <a href="#promo" class="nav-link text-gray-700 hover:text-pink-600 font-medium">PROMO</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-pink-600 font-medium">KONTAK</a>
+                </div>
+
+                <!-- Logo Center -->
+                <div class="flex-1 flex justify-center md:justify-center">
+                    <a href="#" class="flex items-center">
+                        <span class="text-2xl font-serif font-bold text-gray-800">SKINEVA</span>
+                    </a>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="flex items-center space-x-6">
+                    <button class="text-gray-600 hover:text-pink-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:text-pink-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:text-pink-600 relative">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <div class="inline-block">
+                        <span class="text-sm tracking-widest text-gray-600 uppercase">🌿 PRODUK ORIGINAL & BPOM</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-serif font-bold text-gray-800 leading-tight">
+                        Kulit Sehat & Glowing<br/>
+                        <span class="text-pink-600">Mulai dari Rp 12.000 </span>
+                    </h1>
+                    <p class="text-gray-600 text-lg max-w-md">
+                        Dapatkan kulit impianmu dengan rangkaian skincare premium kami. 
+                        Terbukti aman, teruji BPOM, dan disukai ribuan customer!
+                    </p>
+                    <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 inline-block">
+                        <div class="flex items-center gap-4">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-pink-600">50K+</p>
+                                <p class="text-xs text-gray-600">Happy Customers</p>
+                            </div>
+                            <div class="w-px h-12 bg-gray-300"></div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-pink-600">4.8★</p>
+                                <p class="text-xs text-gray-600">Rating Shopee</p>
+                            </div>
+                            <div class="w-px h-12 bg-gray-300"></div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-pink-600">100%</p>
+                                <p class="text-xs text-gray-600">Original</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 pt-4">
+                        <button class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-md font-medium transition duration-300 shadow-lg flex items-center gap-2">
+                            🛒 Belanja Sekarang
+                        </button>
+                        <button class="border-2 border-gray-800 hover:bg-gray-800 hover:text-white text-gray-800 px-8 py-3 rounded-md font-medium transition duration-300">
+                            Lihat Promo
+                        </button>
+                    </div>
+                </div>
+
+              
+                <!-- Right Image -->
+<div class="relative flex justify-center">
+
+   
+        <!-- HERO IMAGE -->
+        <img 
+            src="img/hero-model.png"
+            alt="Model Skincare"
+            class="w-[460px] h-[360px] object-cover rounded-xl">
+
+    </div>
+
+</div>
+
+                    <div class="absolute bottom-10 right-0 text-6xl opacity-60">🌿</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale Banner -->
+    <section class="bg-gradient-to-r from-pink-500 to-rose-500 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-4 text-white">
+                <span class="text-2xl">⚡</span>
+                <span class="font-bold text-lg">FLASH SALE HARI INI!</span>
+                <span class="bg-white text-pink-600 px-4 py-1 rounded-full font-bold">Diskon hingga 40%</span>
+                <span class="text-sm">⏰ Berakhir dalam: 03:45:20</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop By Category -->
+    <section class="py-20 bg-white" id="shop">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center text-gray-800 mb-4">Kategori Produk</h2>
+            <p class="text-center text-gray-600 mb-16">Temukan produk sesuai kebutuhan kulitmu</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="img/glowing-serum.png" alt="Glowing Serum" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-medium text-gray-800"> Glowing Serum</h3>
+                    <p class="text-xs text-gray-500">25 Produk</p>
+                </div>
+
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                         <img src="img/day-cream-5g.png" alt="Glow Up Day Cream" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-medium text-gray-800">Glow up Day cream</h3>
+                    <p class="text-xs text-gray-500">18 Produk</p>
+                </div>
+
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="img/night-cream.png" alt="Glowing Night Cream" class="w-full h-full object-contain">
+
+                    </div>
+                    <h3 class="font-medium text-gray-800">Glowing Night cream</h3>
+                    <p class="text-xs text-gray-500">12 Produk</p>
+                </div>
+
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="img/saffron-soap.png" alt="Saffron Soap" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-medium text-gray-800">Saffron Soap</h3>
+                    <p class="text-xs text-gray-500">20 Produk</p>
+                </div>
+
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="img/essence-toner.png" alt="Essence Toner" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-medium text-gray-800">Essense Toner</h3>
+                    <p class="text-xs text-gray-500">15 Produk</p>
+                </div>
+
+                <div class="text-center category-circle cursor-pointer">
+                    <div class="w-32 h-32 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="img/acne-totol.png" alt="Acne Totol Jerawat" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-medium text-gray-800">Acne Totol jerawat</h3>
+                    <p class="text-xs text-gray-500">10 Produk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Seller Products -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold text-gray-800 mb-2">Produk Best Seller</h2>
+                    <p class="text-gray-600">Pilihan favorit ribuan customer kami</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-6 py-2 bg-pink-500 text-white rounded-full font-medium">Semua</button>
+                    <button class="px-6 py-2 bg-white text-gray-700 rounded-full font-medium hover:bg-pink-100">Serum</button>
+                    <button class="px-6 py-2 bg-white text-gray-700 rounded-full font-medium hover:bg-pink-100">Moisturizer</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Product 1 - Serum -->
+                <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+                    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+                        <!-- Product 1 - Serum -->
+<div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+
+        <!-- PRODUCT IMAGE -->
+        <img 
+            src="img/day-cream-5g.png"
+            alt="Glowing Serum"
+            class="w-full h-full object-contain p-6">
+        <!-- ADD TO CART BUTTON -->
+        <button class="absolute bottom-3 left-3 right-3 bg-pink-500 text-white py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            + Keranjang
+        </button>
+
+    </div>
+</div>
+
+                        <div class="absolute top-3 left-3 badge-bestseller text-white text-xs px-3 py-1 rounded-full font-bold">BEST SELLER</div>
+                        <div class="absolute top-3 right-3 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <button class="absolute bottom-3 left-3 right-3 bg-pink-500 text-white py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            + Keranjang
+                        </button>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500">(4.8 | 2.5k terjual)</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Glow up Day cream</h3>
+                        <p class="text-xs text-gray-500 mb-3">5gr | BPOM Certified</p>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-bold text-pink-600">Rp 39.000</span>
+                            <span class="text-sm text-gray-400 price-strike">Rp 42.000</span>
+                        </div>
+                        <div class="bg-pink-50 rounded-lg p-2 text-xs">
+                            <span class="font-medium text-pink-700">💎 Beli 2 Diskon 10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 - Serum Vitamin C -->
+                <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+                    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+                        <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+        
+        <!-- PRODUCT IMAGE -->
+        <img 
+            src="img/glowing-serum.png"
+            alt="Glowing Serum"
+            class="w-full h-full object-contain p-6">
+
+        
+
+    </div>
+</div>
+
+                        <div class="absolute top-3 left-3 badge-sale text-white text-xs px-3 py-1 rounded-full font-bold">SALE 40%</div>
+                        <div class="absolute top-3 right-3 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <button class="absolute bottom-3 left-3 right-3 bg-pink-500 text-white py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            + Keranjang
+                        </button>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500">(4.8 | 1.8k terjual)</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Glowing Serum</h3>
+                        <p class="text-xs text-gray-500 mb-3">15ml | Dermatologist Tested</p>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-bold text-pink-600">Rp 32.000</span>
+                            <span class="text-sm text-gray-400 price-strike">Rp 35.000</span>
+                        </div>
+                        <div class="bg-pink-50 rounded-lg p-2 text-xs">
+                            <span class="font-medium text-pink-700">⚡ Flash Sale s/d 23:59</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 - Hyaluronic Serum -->
+                <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+                    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+                        <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+
+        <!-- PRODUCT IMAGE -->
+        <img 
+            src="img/night-cream.png"
+            alt="Hyaluronic Serum"
+            class="w-full h-full object-contain p-6">
+
+    </div>
+</div>
+
+                        <div class="absolute top-3 left-3 badge-new text-white text-xs px-3 py-1 rounded-full font-bold">NEW</div>
+                        <div class="absolute top-3 right-3 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <button class="absolute bottom-3 left-3 right-3 bg-pink-500 text-white py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            + Keranjang
+                        </button>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500">(5.0 | 890 terjual)</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Glowing Night cream</h3>
+                        <p class="text-xs text-gray-500 mb-3">10gr | Alpha-Arbutin</p>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-bold text-pink-600">Rp 57.000</span>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Product 4 - Retinol Serum -->
+                <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+                    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+                        <div class="product-card bg-white rounded-xl overflow-hidden cursor-pointer">
+    <div class="relative bg-pink-50 h-72 flex items-center justify-center group">
+
+        <!-- PRODUCT IMAGE -->
+        <img 
+            src="img/essence-toner.png"
+            alt="Retinol Serum"
+            class="w-full h-full object-contain p-6">
+
+
+    </div>
+</div>
+
+                        <div class="absolute top-3 left-3 badge-bestseller text-white text-xs px-3 py-1 rounded-full font-bold">BEST SELLER</div>
+                        <div class="absolute top-3 right-3 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <button class="absolute bottom-3 left-3 right-3 bg-pink-500 text-white py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            + Keranjang
+                        </button>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500">(4.9 | 3.2k terjual)</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Essense Toner</h3>
+                        <p class="text-xs text-gray-500 mb-3">60ml | Hyaluronic acid</p>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-bold text-pink-600">Rp 40.000</span>
+                            <span class="text-sm text-gray-400 price-strike">Rp 37.000</span>
+                        </div>
+                        <div class="bg-pink-50 rounded-lg p-2 text-xs">
+                            <span class="font-medium text-pink-700">💎 Bundle 3pcs -15%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 border-2 border-pink-500 text-pink-500 rounded-lg font-medium hover:bg-pink-500 hover:text-white transition duration-300">
+                    Lihat Semua Produk →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Section -->
+    <section class="py-20 bg-white" id="paket">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Paket Hemat Bundling</h2>
+                <p class="text-gray-600 text-lg">Lebih hemat dengan paket lengkap! Diskon hingga 30%</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Paket Starter -->
+                <div class="package-card bg-white rounded-2xl shadow-lg p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Basic</h3>
+                        <p class="text-sm text-gray-500">Untuk pemula skincare</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Saffron soap</p>
+                                <p class="text-xs text-gray-500">Spriluna</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glow up Day cream</p>
+                                <p class="text-xs text-gray-500">UV filter</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glowing serum</p>
+                                <p class="text-xs text-gray-500">Hyaluronic acid</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="border-t pt-6 mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-500">Harga Normal:</span>
+                            <span class="text-gray-400 line-through">Rp 80.000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-700">Harga Paket:</span>
+                            <span class="text-3xl font-bold text-pink-600">Rp 78.000</span>
+                        </div>
+          
+                    </div>
+
+                    <button class="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition duration-300">
+                        Beli Paket Ini
+                    </button>
+                </div>
+
+                <!-- Paket Complete (Popular) -->
+                <div class="package-card package-popular bg-gradient-to-b from-pink-50 to-white rounded-2xl shadow-2xl p-8 transform scale-105">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Glowing Small</h3>
+                        <p class="text-sm text-gray-500">Perawatan yang dirancang khusus untuk kulit tampak sehat,cerah,dankenyal</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Saffron Soap</p>
+                                <p class="text-xs text-gray-500">Spriluna</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Essense Toner</p>
+                                <p class="text-xs text-gray-500">Salicylic acid</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glowing Serum</p>
+                                <p class="text-xs text-gray-500">Hyaluronic acid</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glow up Day Cream</p>
+                                <p class="text-xs text-gray-500">UV filter</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glowing Night cream</p>
+                                <p class="text-xs text-gray-500">Niacinamide</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-3">
+                            <span class="text-pink-500 mt-1"></span>
+                            
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6 mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-500">Harga Normal:</span>
+                            <span class="text-gray-400 line-through">Rp 170.000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-700">Harga Paket:</span>
+                            <span class="text-3xl font-bold text-pink-600">Rp 168.000</span>
+                        </div>
+                        
+                    </div>
+
+                    <button class="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white py-3 rounded-lg font-semibold transition duration-300 shadow-lg">
+                        🔥 Beli Paket Terlaris
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-500 mt-3">⭐ Dipilih 15.000+ customer</p>
+                </div>
+
+                <!-- Paket Premium -->
+                <div class="package-card bg-white rounded-2xl shadow-lg p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Acne Small</h3>
+                        <p class="text-sm text-gray-500">Perawatan untuk mencegah dan mengatasi jerawat pada wajah</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Saffron Soap</p>
+                                <p class="text-xs text-gray-500">Spriluna</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Essence Toner</p>
+                                <p class="text-xs text-gray-500">Hyaluronic acid</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glowing Serum</p>
+                                <p class="text-xs text-gray-500">Brightening, Hydrating, Anti-aging</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glowing Night cream</p>
+                                <p class="text-xs text-gray-500">Niacinamide</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Glow up Day cream</p>
+                                <p class="text-xs text-gray-500">UV filter</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Acne Totol</p>
+                                <p class="text-xs text-gray-500">Obat totol jerawat</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="flex-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6 mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-500">Harga Normal:</span>
+                            <span class="text-gray-400 line-through">Rp 190.000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-700">Harga Paket:</span>
+                            <span class="text-3xl font-bold text-pink-600">Rp 187.000</span>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 rounded-lg font-semibold transition duration-300">
+                        Beli Paket Acne
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Custom Package Info -->
+            <div class="mt-16 bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Butuh Paket Custom?</h3>
+                <p class="text-gray-600 mb-6">Konsultasikan kebutuhan skincare Anda dengan beauty advisor kami. <br/>Dapatkan rekomendasi paket sesuai jenis kulit dan budget!</p>
+                <button class="bg-white hover:bg-gray-50 text-pink-600 font-semibold px-8 py-3 rounded-lg shadow-md transition duration-300">
+                    💬 Chat Beauty Advisor
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="py-16 bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-6 text-white">
+                <div class="text-center">
+                    <div class="text-4xl mb-3">🚚</div>
+                    <h3 class="font-bold text-lg mb-2">Gratis Ongkir</h3>
+                    <p class="text-sm opacity-90">Min. belanja Rp 100.000</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-3">💯</div>
+                    <h3 class="font-bold text-lg mb-2">100% Original</h3>
+                    <p class="text-sm opacity-90">Produk BPOM resmi</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-3">🎁</div>
+                    <h3 class="font-bold text-lg mb-2">Bonus Menarik</h3>
+                    <p class="text-sm opacity-90">Setiap pembelian paket</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center text-gray-800 mb-4">Kata Mereka</h2>
+            <p class="text-center text-gray-600 mb-16">Testimoni dari ribuan customer yang puas</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-pink-200 rounded-full"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sarah M.</h4>
+                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">"Paket glowing small benar-benar worth it! Kulitku jadi lebih cerah dan glowing dalam 2 minggu. Puas banget! 💕"</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-pink-200 rounded-full"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Dina K.</h4>
+                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">"Serumnya amazing! Flek hitam di wajahku memudar. CS nya juga responsif dan helpful. Recommend!</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-pink-200 rounded-full"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Lisa A.</h4>
+                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">"Pengiriman cepat, packaging rapi. Produknya original dan aman. Sudah repeat order 3x! ✨"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold text-xl mb-4">SKINEVA</h3>
+                    <p class="text-sm mb-4">Solusi skincare terpercaya untuk kulit sehat dan glowing.</p>
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-pink-600">
+                            <img src="img/logo-tiktok.png" alt="TikTok" class="w-4 h-4 object-contain">
+                        </div>
+                        <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-pink-600">
+                            <img src="img/logo-instagram.png" alt="Instagram" class="w-4 h-4 object-contain">
+                        </div>
+                        <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-pink-600">
+                            <img src="img/logo-whatsapp.png" alt="WhatsApp" class="w-4 h-4 object-contain">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Belanja</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-pink-400">Produk Terbaru</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Best Seller</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Paket Bundling</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Promo & Diskon</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-pink-400">Cara Pemesanan</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Pembayaran</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Pengiriman</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Return & Refund</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>WhatsApp: 0857-2544-6586</li>
+                        <li>Instagram: skineva_offc</li>
+                        <li>Jam buka: Senin-Sabtu 09.00-21.00</li>
+                        <li>Jepara,mlonggo rt 24/rw 05 sebelah rama mahkota toko merah RR Store</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-sm">&copy; 2026 skineva Skincare. All rights reserved.</p>
+                    <div class="flex gap-4 text-sm">
+                        <a href="#" class="hover:text-pink-400">Syarat & Ketentuan</a>
+                        <span>|</span>
+                        <a href="#" class="hover:text-pink-400">Kebijakan Privasi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
